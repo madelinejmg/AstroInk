@@ -1,9 +1,6 @@
-
-import streamlit as st
 import sys
 import os
 
-# Add src/ to Python path for Streamlit Cloud
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from arxiv_scraper import search_arxiv
