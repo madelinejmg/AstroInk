@@ -1,8 +1,8 @@
+import streamlit as st
 import sys
 import os
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-import streamlit as st
 from arxiv_scraper import search_arxiv
 from summarizer import summarize_text
 
