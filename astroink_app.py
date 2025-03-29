@@ -3,7 +3,7 @@ import os
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
-from summarizer import summarize_text
+from path.to.summarizer import summarize_text
 from arxiv_scraper import search_arxiv
 
 st.set_page_config(page_title='AstroInk', layout='wide')
