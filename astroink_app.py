@@ -1,8 +1,7 @@
 import sys
 import os
 
-#sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
-sys.path.append('..')
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from summarizer import summarize_text
 from arxiv_scraper import search_arxiv
