@@ -1,22 +1,25 @@
+import sys
+import os
+sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 import streamlit as st
-from src.arxiv_scraper import search_arxiv
-from src.summarizer import summarize_text
+from arxiv_scraper import search_arxiv
+from summarizer import summarize_text
 
 st.set_page_config(page_title='AstroInk', layout='wide')
 
-st.title("🪐 AstroInk")
-st.markdown("**Your AI-powered research assistant for the cosmos.**")
+st.title("AstroInk")
+st.markdown("**A faster way to search for astrophysical research papers from arXiv.**")
 
 # Sidebar controls
-st.sidebar.title("🔧 Search Options")
+st.sidebar.title("Search Options")
 query = st.sidebar.text_input("Enter a topic or keyword:", "M-dwarf exoplanets")
 max_results = st.sidebar.slider("Number of Papers", 1, 10, 3)
 summary_length = st.sidebar.selectbox("Summary Length", ["Short", "Medium", "Long"], index=1)
 length_map = {"Short": 2, "Medium": 4, "Long": 6}
 
 # Execute search
-if st.sidebar.button("🔍 Run Search"):
+if st.sidebar.button("Search"):
     with st.spinner("Searching arXiv..."):
         papers = search_arxiv(query, max_results=max_results)
 
@@ -40,7 +43,7 @@ if st.sidebar.button("🔍 Run Search"):
             st.code(paper['citation'], language='bibtex')
 
             st.download_button(
-                label="📄 Download BibTeX",
+                label="Download BibTeX",
                 data=paper['citation'],
                 file_name=f"{paper['title'][:50].replace(' ', '_')}.bib",
                 mime="text/plain"
@@ -52,7 +55,7 @@ if st.sidebar.button("🔍 Run Search"):
         if summary_texts:
             full_export = "\n\n".join(summary_texts)
             st.sidebar.download_button(
-                label="⬇️ Download All Summaries",
+                label="⬇Download All Summaries",
                 data=full_export,
                 file_name="astroink_summaries.txt",
                 mime="text/plain"
