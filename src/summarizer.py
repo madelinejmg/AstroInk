@@ -1,11 +1,6 @@
-from sumy.parsers.plaintext import PlaintextParser
-from sumy.nlp.tokenizers import Tokenizer
-from sumy.summarizers.lex_rank import LexRankSummarizer
-import nltk
+import re
 
-def summarize_text(text, num_sentences=3):
-    nltk.download('punkt')
-    parser = PlaintextParser.from_string(text, Tokenizer("english"))
-    summarizer = LexRankSummarizer()
-    summary = summarizer(parser.document, num_sentences)
-    return " ".join(str(sentence) for sentence in summary)
+def summarize_text(text, num_sentences = 3):
+    sentences = re.split(r'(?<=[.!?]) +', text.strip())
+    summary = setnences[:num_sentences)
+    return " ".join(summary)
