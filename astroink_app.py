@@ -12,6 +12,7 @@ st.set_page_config(page_title='AstroInk', layout='wide')
 st.title("AstroInk")
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
+[![](https://github.com/madelinejmg/AstroInk)]
 # Sidebar controls
 st.sidebar.title("Search Options")
 query = st.sidebar.text_input("Enter a topic or keyword:", "M-dwarf exoplanets")
