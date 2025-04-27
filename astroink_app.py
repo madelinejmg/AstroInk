@@ -110,15 +110,6 @@ if st.sidebar.button("Search"):
 
             st.markdown("---")
             
-        # Export all citations
-        if filtered_papers:
-            all_citations = "\n\n".join(paper['citation'] for paper in filtered_papers)
-            st.sidebar.download_button(
-                label="Download All Citations (.bib)",
-                data=all_citations,
-                file_name="astroink_citations.bib",
-                mime="text/plain"
-            )
         # Export all summaries
         if summary_texts:
             full_export = "\n\n".join(summary_texts)
@@ -129,3 +120,12 @@ if st.sidebar.button("Search"):
                 mime="text/plain"
             )
             
+        # Export all citations
+        if filtered_papers:
+            all_citations = "\n\n".join(paper['citation'] for paper in filtered_papers)
+            st.sidebar.download_button(
+                label="Download All Citations (.bib)",
+                data=all_citations,
+                file_name="astroink_citations.bib",
+                mime="text/plain"
+            )
