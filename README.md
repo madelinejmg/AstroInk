@@ -11,10 +11,11 @@ AstroInk is particularly useful for students and early-career researchers who ar
 # Getting Started
 1. To run AstroInk locally:
 
-'''
+```
 git clone https://github.com/yourusername/AstroInk.git
+
 cd AstroInk
-'''
+```
 
 2. Install the required Python packages:
 
