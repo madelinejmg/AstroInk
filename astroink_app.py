@@ -39,7 +39,9 @@ if st.sidebar.button("Search"):
             st.markdown(f"**Authors:** {', '.join(paper['authors'])}")
             st.markdown(f"**Published:** {paper['published'].date()}")
 
-            summary = summarize_text(paper['summary'], num_sentences=length_map[summary_length])
+            with st.spinner('Summarizing...'):
+                summary = summarize_text(paper['summary'])
+
             st.markdown("**Summary:**")
             st.write(summary)
             summary_texts.append(f"Title: {paper['title']}\nSummary: {summary}\n")
