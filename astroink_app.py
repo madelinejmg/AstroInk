@@ -6,6 +6,7 @@ sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
 from summarizer import summarize_text
 from arxiv_scraper import search_arxiv
+from keywords import extract_keywords
 
 st.set_page_config(page_title='AstroInk', layout='wide')
 
@@ -85,14 +86,45 @@ if st.sidebar.button("Search"):
         st.warning("No papers matched your filters. Try relaxing your filter settings!")
     else:
         # Display papers normally
+        summary_texts = []
+        # Display papers normally
         for idx, paper in enumerate(filtered_papers):
             st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
+
+            # BADGES
+            col1, col2, col3 = st.columns(3)
+        
+            abstract_length = len(paper['summary'].split())
+            num_authors = len(paper['authors'])
+            year_published = paper['published'].year
+        
+            special_paper = False
+            if year_published >= 2024 and abstract_length > 250:
+                special_paper = True
+        
+            with col1:
+                if year_published >= 2024:
+                    st.badge("New", color="blue")
+            with col2:
+                if num_authors > 5:
+                    st.badge("Big Collaboration", color="purple")
+            with col3:
+                if abstract_length > 250:
+                    st.badge("Detailed", color="green")
+                elif abstract_length < 100: 
+                    st.badge("Short Abstract", color="red")
+
             st.markdown(f"**Authors:** {', '.join(paper['authors'])}")
             st.markdown(f"**Published:** {paper['published'].date()}")
 
-            max_len, min_len = (150, 30)  # If you are still using simple regex summarization
+            # Extract and show keywords
+            keywords = extract_keywords(paper['summary'])
+            st.markdown("**Keywords:** " + ", ".join(f"`{kw}`" for kw in keywords))
+            
+            #max_len, min_len = (150, 30)  # If you are still using simple regex summarization
             summary = summarize_text(paper['summary'], num_sentences=length_map[summary_length])
 
+            # Summary
             st.markdown("**Summary:**")
             st.write(summary)
             st.caption("Note: Summaries are based on the first few sentences for fast performance.")
