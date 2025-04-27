@@ -1,5 +1,5 @@
 ![logo](astroink.png)
-# AstroInk ࣪ ִֶָ☾.
+# AstroInk 🪐
 A faster way to search for astrophysical research papers from [arXiv](https://arxiv.org/).
 
 
