@@ -46,6 +46,7 @@ summary_length = st.sidebar.selectbox("Summary Length", ["Short", "Medium", "Lon
 length_map = {"Short": 2, "Medium": 4, "Long": 6}
 
 # Execute search
+# Execute search
 if st.sidebar.button("Search"):
     with st.spinner("Searching arXiv..."):
         papers = search_arxiv(query, max_results=max_results)
@@ -53,33 +54,64 @@ if st.sidebar.button("Search"):
     if not papers:
         st.warning("No results found. Try a different topic!")
     else:
-        summary_texts = []
         st.success(f"Found {len(papers)} papers for '{query}'")
+        
+        # Sort papers by most recent
+        papers = sorted(papers, key=lambda x: x['published'], reverse=True)
+        
+        # Filter papers
+        filtered_papers = []
+        for paper in papers:
+            year = paper['published'].year
+            abstract_word_count = len(paper['summary'].split())
 
-        for idx, paper in enumerate(papers):
+            if year >= year_filter and abstract_word_count >= min_abstract_length:
+                filtered_papers.append(paper)
+
+        # Show papers
+        summary_texts = []
+        for idx, paper in enumerate(filtered_papers):
             st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
             st.markdown(f"**Authors:** {', '.join(paper['authors'])}")
             st.markdown(f"**Published:** {paper['published'].date()}")
 
-            with st.spinner('Summarizing...'):
-                summary = summarize_text(paper['summary'])
+            max_len, min_len = (150, 30)  # If you are still using simple regex summarization
+            summary = summarize_text(paper['summary'], num_sentences=length_map[summary_length])
 
             st.markdown("**Summary:**")
             st.write(summary)
+            st.caption("Note: Summaries are based on the first few sentences for fast performance.")
+            
             summary_texts.append(f"Title: {paper['title']}\nSummary: {summary}\n")
 
+            # Citation block
             st.markdown("**Citation (BibTeX):**")
             st.code(paper['citation'], language='bibtex')
 
+            # Individual BibTeX download
             st.download_button(
                 label="Download BibTeX",
                 data=paper['citation'],
                 file_name=f"{paper['title'][:50].replace(' ', '_')}.bib",
                 mime="text/plain"
             )
+            
+            # PDF Download link
+            paper_id = paper['id'].split('/')[-1]  # Get the arXiv ID part
+            pdf_url = f"https://arxiv.org/pdf/{paper_id}.pdf"
+            st.markdown(f"[Download PDF]({pdf_url})", unsafe_allow_html=True)
 
             st.markdown("---")
-
+            
+        # Export all citations
+        if filtered_papers:
+            all_citations = "\n\n".join(paper['citation'] for paper in filtered_papers)
+            st.sidebar.download_button(
+                label="Download All Citations (.bib)",
+                data=all_citations,
+                file_name="astroink_citations.bib",
+                mime="text/plain"
+            )
         # Export all summaries
         if summary_texts:
             full_export = "\n\n".join(summary_texts)
@@ -89,6 +121,7 @@ if st.sidebar.button("Search"):
                 file_name="astroink_summaries.txt",
                 mime="text/plain"
             )
+            
 st.sidebar.title("About AstroInk")
 st.sidebar.info(
     """
