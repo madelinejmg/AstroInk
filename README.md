@@ -20,20 +20,20 @@ Local installation is optional for users who want to run the app on their own ma
 ### Option 2 (Install locally by following the steps below):
 1. To run AstroInk locally:
 
-```
+```shell
 git clone https://github.com/yourusername/AstroInk.git
 cd AstroInk
 ```
 
 2. Install the required Python packages:
 
-```
+```shell
 pip install -r requirements.txt
 ```
 
 3. Launch the Streamlit app:
 
-```
+```shell
 streamlit run app.py
 ```
 
