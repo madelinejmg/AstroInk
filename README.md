@@ -1,7 +1,7 @@
-![logo](astroink.png)
-# AstroInk 🪐
-A faster way to search for astrophysical research papers from [arXiv](https://arxiv.org/).
+<h1 align="center">AstroInk 🪐</h1>
+<p align="center">A faster way to search for astrophysical research papers from [arXiv](https://arxiv.org/)</p>
 
+![logo](astroink.png)
 
 # What is AstroInk?
 AstroInk is a Python-based tool designed to streamline the process of finding, summarizing, and citing astrophysical research papers from arXiv, an open-access repository featuring the latest scientific publications. Users can input a topic or keyword (such as "transits" or "stellar variability"), and the tool automatically queries the arXiv API to retrieve the most relevant papers. It then parses each paper's metadata, including the title, authors, abstract, publication source, and publication date. Using a natural language processing (NLP) model, AstroInk generates concise, accessible summaries of the abstracts. It also auto-generates citations in formats like BibTeX or APA, ready to be dropped into research documents.
