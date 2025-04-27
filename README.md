@@ -1,5 +1,5 @@
 <h1 align="center">AstroInk 🪐</h1>
-<p align="center">A faster way to search for astrophysical research papers from [arXiv](https://arxiv.org/)</p>
+<p align="center">A faster way to search for astrophysical research papers from ![arXiv](https://arxiv.org/)</p>
 
 ![logo](astroink.png)
 
