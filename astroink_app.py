@@ -80,9 +80,11 @@ if st.sidebar.button("Search"):
 
             if year >= year_filter and abstract_word_count >= min_abstract_length:
                 filtered_papers.append(paper)
-
-        # Show papers
-        summary_texts = []
+    # After filtering papers
+    if not filtered_papers:
+        st.warning("No papers matched your filters. Try relaxing your filter settings!")
+    else:
+        # Display papers normally
         for idx, paper in enumerate(filtered_papers):
             st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
             st.markdown(f"**Authors:** {', '.join(paper['authors'])}")
