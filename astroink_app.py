@@ -45,6 +45,12 @@ max_results = st.sidebar.slider("Number of Papers", 1, 10, 3)
 summary_length = st.sidebar.selectbox("Summary Length", ["Short", "Medium", "Long"], index=1)
 length_map = {"Short": 2, "Medium": 4, "Long": 6}
 
+# Sidebar Filter Options
+st.sidebar.title("Filter Options")
+year_filter = st.sidebar.number_input("Only show papers from year (or later):", value=2020, min_value=1990, max_value=2030)
+min_abstract_length = st.sidebar.slider("Minimum Abstract Length (words):", 0, 500, 50)
+
+# About Section
 st.sidebar.title("About AstroInk")
 st.sidebar.info(
     """
@@ -53,7 +59,7 @@ st.sidebar.info(
     """
 )
 
-# Execute search
+# --- Main Search Execution ---
 if st.sidebar.button("Search"):
     with st.spinner("Searching arXiv..."):
         papers = search_arxiv(query, max_results=max_results)
