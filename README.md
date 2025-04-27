@@ -13,7 +13,6 @@ AstroInk is particularly useful for students and early-career researchers who ar
 
 ```
 git clone https://github.com/yourusername/AstroInk.git
-
 cd AstroInk
 ```
 
