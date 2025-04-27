@@ -9,6 +9,28 @@ from arxiv_scraper import search_arxiv
 
 st.set_page_config(page_title='AstroInk', layout='wide')
 
+st.markdown("""
+    <style>
+    .main {
+        background-color: #f8f9fa;
+    }
+    h1 {
+        text-align: center;
+        color: #343a40;
+    }
+    p {
+        text-align: center;
+        font-size: 1.2em;
+    }
+    footer {
+        text-align: center;
+        font-size: 0.8em;
+        color: #6c757d;
+        padding-top: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("AstroInk")
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
