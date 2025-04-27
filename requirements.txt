@@ -2,3 +2,4 @@ arxiv
 sumy
 streamlit
 bibtexparser
+transformers
