@@ -34,6 +34,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("AstroInk")
+st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
 # To center the image
 st.markdown(
@@ -44,8 +45,6 @@ st.markdown(
     """,
     unsafe_allow_html=True
 )
-
-st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
 # Sidebar controls
 st.sidebar.title("Search Options")
