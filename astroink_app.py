@@ -68,7 +68,7 @@ if st.sidebar.button("Search"):
     if not papers:
         st.warning("No results found. Try a different topic!")
     else:       
-        st.success(f"Downloaded {len(papers)} papers. {len(filtered_papers)} papers matched your filters for '{query}'.")
+        st.success(f"Downloaded {len(papers)} papers. {len(papers)} papers matched your filters for '{query}'.")
         st.badge(f"{len(papers)} papers shown", color="blue")
 
         # Display papers normally
