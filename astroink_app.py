@@ -69,12 +69,12 @@ if st.sidebar.button("Search"):
         st.warning("No results found. Try a different topic!")
     else:       
         st.success(f"Downloaded {len(papers)} papers. {len(filtered_papers)} papers matched your filters for '{query}'.")
-        st.badge(f"{len(filtered_papers)} papers shown", color="blue")
+        st.badge(f"{len(papers)} papers shown", color="blue")
 
         # Display papers normally
         summary_texts = []
         
-        for idx, paper in enumerate(filtered_papers):
+        for idx, paper in enumerate(papers):
             st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
 
             # BADGES
@@ -147,8 +147,8 @@ if st.sidebar.button("Search"):
             )
             
         # Export all citations
-        if filtered_papers:
-            all_citations = "\n\n".join(paper['citation'] for paper in filtered_papers)
+        if papers:
+            all_citations = "\n\n".join(paper['citation'] for paper in papers)
             st.sidebar.download_button(
                 label="Download All Citations (.bib)",
                 data=all_citations,
