@@ -34,6 +34,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("AstroInk")
+st.image("astroink_logo.png", width=300) 
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
 # Sidebar controls
