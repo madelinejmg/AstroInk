@@ -116,7 +116,7 @@ if st.sidebar.button("Search"):
             if response.status_code == 200:
                 st.download_button(
                     label="Download PDF",
-                    data=None,
+                    data=response.content,
                     file_name=f"{paper_id}.pdf",
                     mime="application/pdf"
                 )
