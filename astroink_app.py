@@ -33,6 +33,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("AstroInk")
+st.badge(f"{len(filtered_papers)} papers shown", color="blue")
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
 """
@@ -68,8 +69,6 @@ if st.sidebar.button("Search"):
     if not papers:
         st.warning("No results found. Try a different topic!")
     else:
-        st.success(f"Found {len(filtered_papers)} papers matching filters for '{query}'")
-        
         # Sort papers by most recent
         papers = sorted(papers, key=lambda x: x['published'], reverse=True)
         
@@ -81,6 +80,8 @@ if st.sidebar.button("Search"):
 
             if year >= year_filter and abstract_word_count >= min_abstract_length:
                 filtered_papers.append(paper)
+                
+       st.success(f"Found {len(filtered_papers)} papers matching filters for '{query}'")
 
     # After filtering papers
     if not filtered_papers:
