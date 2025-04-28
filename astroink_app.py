@@ -81,20 +81,18 @@ if st.sidebar.button("Search"):
             st.markdown(f"**Authors:** {', '.join(paper['authors'])}")
             st.markdown(f"**Published:** {paper['published'].date()}")
 
-            # Extract and show keywords
-            keywords = extract_keywords(paper['summary'])
-            st.markdown("**Keywords:** " + ", ".join(f"`{kw}`" for kw in keywords))
-            
-            #max_len, min_len = (150, 30)  # If you are still using simple regex summarization
             summary = summarize_text(paper['summary'], num_sentences=length_map[summary_length])
 
             # Summary
             st.markdown("**Summary:**")
             st.write(summary)
-            st.caption("Note: Summaries are based on the first few sentences for fast performance.")
             
             summary_texts.append(f"Title: {paper['title']}\nSummary: {summary}\n")
-
+            
+            # Extract and show keywords
+            keywords = extract_keywords(paper['summary'])
+            st.markdown("**Keywords:** " + ", ".join(f"`{kw}`" for kw in keywords))
+            
             # Citation block
             st.markdown("**Citation (BibTeX):**")
             st.code(paper['citation'], language='bibtex')
