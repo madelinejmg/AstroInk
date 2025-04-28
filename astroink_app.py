@@ -68,7 +68,12 @@ if st.sidebar.button("Search"):
         summary_texts = []
         
         for idx, paper in enumerate(papers):
-            st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
+            st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']}) &nbsp; 
+            <span style='background-color: #e0f7fa; 
+            color: #007BFF; padding: 3px 8px; 
+            border-radius: 8px; font-size: 
+            0.8em;'>NEW</span>", unsafe_allow_html=True)
+
 
             # BADGES
             col1, col2, col3 = st.columns(3)
