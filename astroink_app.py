@@ -94,18 +94,6 @@ if st.sidebar.button("Search"):
             keywords = extract_keywords(paper['summary'])
             st.markdown("**Keywords:** " + ", ".join(f"`{kw}`" for kw in keywords))
             
-            # Citation block
-            st.markdown("**Citation (BibTeX):**")
-            st.code(paper['citation'], language='bibtex')
-
-            # Individual BibTeX download
-            st.download_button(
-                label="Download BibTeX",
-                data=paper['citation'],
-                file_name=f"{paper['title'][:50].replace(' ', '_')}.bib",
-                mime="text/plain"
-            )
-            
             # PDF Download link
             paper_id = paper['url'].split('/')[-1]  # Get the arXiv ID part
             pdf_url = f"https://arxiv.org/pdf/{paper_id}.pdf"
@@ -122,6 +110,18 @@ if st.sidebar.button("Search"):
                 )
             else:
                 st.error("Failed to fetch the PDF.")
+                
+            # Citation block
+            st.markdown("**Citation (BibTeX):**")
+            st.code(paper['citation'], language='bibtex')
+
+            # Individual BibTeX download
+            st.download_button(
+                label="Download BibTeX",
+                data=paper['citation'],
+                file_name=f"{paper['title'][:50].replace(' ', '_')}.bib",
+                mime="text/plain"
+            )
 
             st.markdown("---")
             
