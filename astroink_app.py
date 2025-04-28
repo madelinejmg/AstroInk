@@ -40,7 +40,7 @@ st.markdown("**A faster way to search for astrophysical research papers from arX
 st.markdown(
     """
     <div style="text-align: center;">
-        <img src="https://info.arxiv.org/brand/images/brand-logo-black.jpg" width="300">
+        <img src="https://info.arxiv.org/brand/images/brand-logo-black.jpg" width="300" style="opacity: 0.8;">
     </div>
     """,
     unsafe_allow_html=True
