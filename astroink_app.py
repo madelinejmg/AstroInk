@@ -33,7 +33,6 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("AstroInk")
-st.badge(f"{len(filtered_papers)} papers shown", color="blue")
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
 """
@@ -82,6 +81,7 @@ if st.sidebar.button("Search"):
                 filtered_papers.append(paper)
                 
         st.success(f"Found {len(filtered_papers)} papers matching filters for '{query}'")
+        st.badge(f"{len(filtered_papers)} papers shown", color="blue")
 
     # After filtering papers
     if not filtered_papers:
