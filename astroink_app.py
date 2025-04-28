@@ -81,7 +81,7 @@ if st.sidebar.button("Search"):
 
             if year >= year_filter and abstract_word_count >= min_abstract_length:
                 filtered_papers.append(paper)
-        st.success(f"Found {len(filtered_papers)} papers matching filters for '{query}'")
+
     # After filtering papers
     if not filtered_papers:
         st.warning("No papers matched your filters. Try relaxing your filter settings!")
