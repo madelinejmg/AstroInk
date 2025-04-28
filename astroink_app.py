@@ -49,7 +49,7 @@ length_map = {"Short": 2, "Medium": 4, "Long": 6}
 # Sidebar Filter Options
 st.sidebar.title("Filter Options")
 year_filter = st.sidebar.number_input("Only show papers from year (or later):", value=2020, min_value=1990, max_value=2030)
-min_abstract_length = st.sidebar.slider("Minimum Abstract Length (words):", 0, 500, 50)
+#min_abstract_length = st.sidebar.slider("Minimum Abstract Length (words):", 0, 500, 50)
 
 # About Section
 st.sidebar.title("About AstroInk")
@@ -75,9 +75,8 @@ if st.sidebar.button("Search"):
         filtered_papers = []
         for paper in papers:
             year = paper['published'].year
-            abstract_word_count = len(paper['summary'].split())
 
-            if year >= year_filter and abstract_word_count >= min_abstract_length:
+            if year >= year_filter:
                 filtered_papers.append(paper)
                 
         st.success(f"Downloaded {len(papers)} papers. {len(filtered_papers)} papers matched your filters for '{query}'.")
