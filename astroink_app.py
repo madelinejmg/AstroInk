@@ -36,17 +36,16 @@ st.markdown("""
 st.title("AstroInk")
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
-# To center the image
-st.markdown(
+
+# Sidebar controls
+st.sidebar.markdown(
     """
-    <div style="text-align: center;">
-        <img src="https://info.arxiv.org/brand/images/brand-logo-black.jpg" width="300" style="opacity: 0.8;">
+    <div style="text-align">
+        <img src="https://info.arxiv.org/brand/images/brand-logo-black.jpg" width="300">
     </div>
     """,
     unsafe_allow_html=True
-)
-
-# Sidebar controls
+) # To center the image
 st.sidebar.title("Search Options")
 query = st.sidebar.text_input("Enter a topic or keyword:", "M-dwarf exoplanets")
 
