@@ -10,6 +10,28 @@ from keywords import extract_keywords
 
 st.set_page_config(page_title='AstroInk', layout='wide')
 
+st.markdown("""
+    <style>
+    [data-testid="stAppViewContainer"] {
+        background-color: #CFB3EF;
+    }
+    h1 {
+        text-align: center;
+        color: #343a40;
+    }
+    p {
+        text-align: center;
+        font-size: 1.2em;
+    }
+    footer {
+        text-align: center;
+        font-size: 0.8em;
+        color: #6c757d;
+        padding-top: 10px;
+    }
+    </style>
+""", unsafe_allow_html=True)
+
 st.title("AstroInk")
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
