@@ -1,6 +1,7 @@
 import streamlit as st
 import sys
 import os
+import requests
 
 sys.path.append(os.path.join(os.path.dirname(__file__), 'src'))
 
@@ -108,13 +109,19 @@ if st.sidebar.button("Search"):
             # PDF Download link
             paper_id = paper['url'].split('/')[-1]  # Get the arXiv ID part
             pdf_url = f"https://arxiv.org/pdf/{paper_id}.pdf"
-            
-            st.download_button(
-                label="Download PDF",
-                data=None,
-                file_name=f"{paper_id}.pdf",
-                mime="application/pdf"
-            )
+
+            # Fetch the PDF file
+            response = requests.get(pdf_url)
+
+            if response.status_code == 200:
+                st.download_button(
+                    label="Download PDF",
+                    data=None,
+                    file_name=f"{paper_id}.pdf",
+                    mime="application/pdf"
+                )
+            else:
+                st.error("Failed to fetch the PDF.")
 
             st.markdown("---")
             
