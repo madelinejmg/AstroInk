@@ -48,7 +48,7 @@ length_map = {"Short": 2, "Medium": 4, "Long": 6}
 
 # Sidebar Filter Options
 st.sidebar.title("Filter Options")
-year_filter = st.sidebar.number_input("Only show papers from year (or later):", value=2020, min_value=1990, max_value=2030)
+year_filter = st.sidebar.number_input("Only show papers from year (or later):", value=2020, min_value=1960, max_value=2100)
 #min_abstract_length = st.sidebar.slider("Minimum Abstract Length (words):", 0, 500, 50)
 
 # About Section
@@ -68,8 +68,8 @@ if st.sidebar.button("Search"):
     if not papers:
         st.warning("No results found. Try a different topic!")
     else:       
-        st.success(f"Downloaded {len(papers)} papers. {len(papers)} papers matched your filters for '{query}'.")
-        st.badge(f"{len(papers)} papers shown", color="blue")
+        # Sort papers by most recent
+        papers = sorted(papers, key=lambda x: x['published'], reverse=True)
 
         # Display papers normally
         summary_texts = []
