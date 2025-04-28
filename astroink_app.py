@@ -67,28 +67,13 @@ if st.sidebar.button("Search"):
 
     if not papers:
         st.warning("No results found. Try a different topic!")
-    else:
-        # Sort papers by most recent
-        papers = sorted(papers, key=lambda x: x['published'], reverse=True)
-        
-        # Filter papers
-        filtered_papers = []
-        for paper in papers:
-            year = paper['published'].year
-
-            if year >= year_filter:
-                filtered_papers.append(paper)
-                
+    else:       
         st.success(f"Downloaded {len(papers)} papers. {len(filtered_papers)} papers matched your filters for '{query}'.")
         st.badge(f"{len(filtered_papers)} papers shown", color="blue")
 
-    # After filtering papers
-    if not filtered_papers:
-        st.warning("No papers matched your filters. Try relaxing your filter settings!")
-    else:
         # Display papers normally
         summary_texts = []
-        # Display papers normally
+        
         for idx, paper in enumerate(filtered_papers):
             st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
 
