@@ -82,18 +82,6 @@ if st.sidebar.button("Search"):
             else:
                 st.markdown(f"### {idx+1}. [{paper['title']}]({paper['url']})")
 
-            with col1:
-                if year_published >= 2024:
-                    st.badge("New", color="blue")
-            with col2:
-                if num_authors > 5:
-                    st.badge("Big Collaboration", color="purple")
-            with col3:
-                if abstract_length > 250:
-                    st.badge("Detailed", color="green")
-                elif abstract_length < 100: 
-                    st.badge("Short Abstract", color="red")
-
             st.markdown(f"**Authors:** {', '.join(paper['authors'])}")
             st.markdown(f"**Published:** {paper['published'].date()}")
 
