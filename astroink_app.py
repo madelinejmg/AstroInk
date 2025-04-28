@@ -80,7 +80,7 @@ if st.sidebar.button("Search"):
             if year >= year_filter and abstract_word_count >= min_abstract_length:
                 filtered_papers.append(paper)
                 
-        st.success(f"Found {len(filtered_papers)} papers matching filters for '{query}'")
+        st.success(f"Downloaded {len(papers)} papers. {len(filtered_papers)} papers matched your filters for '{query}'.")
         st.badge(f"{len(filtered_papers)} papers shown", color="blue")
 
     # After filtering papers
