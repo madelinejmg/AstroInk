@@ -13,7 +13,7 @@ st.set_page_config(page_title='AstroInk', layout='wide')
 st.markdown("""
     <style>
     .main {
-        background-color: #cfb3ef;
+        background-color: #CFB3EF;
     }
     h1 {
         text-align: center;
