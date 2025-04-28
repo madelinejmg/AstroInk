@@ -39,7 +39,7 @@ st.title("AstroInk")
 st.markdown(
     """
     <div style="text-align: center;">
-        <img src="astroink_logo.png" width="300">
+        <img src="https://info.arxiv.org/brand/images/brand-logo-black.jpg" width="300">
     </div>
     """,
     unsafe_allow_html=True
