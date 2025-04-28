@@ -71,6 +71,9 @@ if st.sidebar.button("Search"):
         # Sort papers by most recent
         papers = sorted(papers, key=lambda x: x['published'], reverse=True)
 
+        # Filter papers based on user-selected year
+        papers = [paper for paper in papers if paper['published'].year >= year_filter]
+
         # Display papers normally
         summary_texts = []
         
