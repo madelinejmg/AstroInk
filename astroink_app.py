@@ -34,7 +34,17 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("AstroInk")
-st.image("https://info.arxiv.org/brand/images/brand-logo-primary.jpg", width=300)
+
+# To center the image
+st.markdown(
+    """
+    <div style="text-align: center;">
+        <img src="astroink_logo.png" width="300">
+    </div>
+    """,
+    unsafe_allow_html=True
+)
+
 st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
 
 # Sidebar controls
