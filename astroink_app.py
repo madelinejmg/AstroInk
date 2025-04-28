@@ -106,9 +106,14 @@ if st.sidebar.button("Search"):
             )
             
             # PDF Download link
-            paper_id = paper['url'].split('/')[-1]  # Get the arXiv ID part
-            pdf_url = f"https://arxiv.org/pdf/{paper_id}.pdf"
-            st.markdown(f"[Download PDF]({pdf_url})", unsafe_allow_html=True)
+            st.download_button(
+                label="Download PDF",
+                paper_id = paper['url'].split('/')[-1]  # Get the arXiv ID part
+                pdf_url = f"https://arxiv.org/pdf/{paper_id}.pdf"
+            )
+
+            
+
 
             st.markdown("---")
             
