@@ -34,7 +34,7 @@ st.markdown("""
 """, unsafe_allow_html=True)
 
 st.title("AstroInk")
-st.markdown("**A faster way to search for astrophysical research papers from arXiv..**")
+st.markdown("**A faster way to search for astrophysical research papers from arXiv**")
 
 
 # Sidebar controls
